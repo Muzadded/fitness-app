@@ -14,7 +14,7 @@ const HomePage2 = () => {
 
   const [Workouts, setWorkouts] = React.useState<any[] | null>(null)
 
-  const getworkouts = async()=>{
+  const getworkouts = async () => {
     let data: any = [
       {
         type: 'Chest',
@@ -66,59 +66,62 @@ const HomePage2 = () => {
     ]
     setWorkouts(data)
   }
-  React.useEffect(()=>{
+  React.useEffect(() => {
     getworkouts()
-  },[])
+  }, [])
 
 
   return (
+
     <div>
       <h1 className='mainhead1'>Workouts</h1>
-      <Swiper
-        slidesPerView={1}
-        spaceBetween={10}
-        pagination={{
-          clickable: true,
-        }}
-        breakpoints={{
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          768: {
-            slidesPerView: 4,
-            spaceBetween: 40,
-          },
-          1024: {
-            slidesPerView: 5,
-            spaceBetween: 50,
-          },
-        }}
-        modules={[Pagination]}
-        className="mySwiper"
-      >
-        {
-          Workouts && Workouts.map((item: any, index: number)=>{
-            return(
-              <SwiperSlide key={index}>
-                <div className="swiper-slide"
-                  style = {{
-                    backgroundImage: `url(${item.imageUrl})`
-                  }}
-                  onClick={()=>{
-                    window.location.href = `/workout/${item.type}`
-                  }}
-                >
-                  <div className="swiper-slide-content">
-                    <h2>{item.type}</h2>
-                    <p>{item.durationInMin}</p>
+      <div className='swipediv'>
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={10}
+          pagination={{
+            clickable: true,
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 4,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 5,
+              spaceBetween: 50,
+            },
+          }}
+          modules={[Pagination]}
+          className="mySwiper"
+        >
+          {
+            Workouts && Workouts.map((item: any, index: number) => {
+              return (
+                <SwiperSlide key={index}>
+                  <div className="swiper-slide"
+                    style={{
+                      backgroundImage: `url(${item.imageUrl})`
+                    }}
+                    onClick={() => {
+                      window.location.href = `/workout/${item.type}`
+                    }}
+                  >
+                    <div className="swiper-slide-content">
+                      <h2>{item.type}</h2>
+                      <p>{item.durationInMin}</p>
+                    </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            )
-          })
-        }
-      </Swiper>
+                </SwiperSlide>
+              )
+            })
+          }
+        </Swiper>
+      </div>
     </div>
   )
 }
