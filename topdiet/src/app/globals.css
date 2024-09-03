@@ -8,20 +8,22 @@ body{
 }
 :root{
     --col1: #9DB2BF;
+    --col2: #FABC3F;
+    --col3: #343131;
 }
 .mainhead1{
-    -webkit-text-stroke: 1px var(--col1);
-    color: transparent;
+    -webkit-text-stroke: 2px var(--col3);
+    color: var(--col2);
     font-size: 10rem;
     text-align: center;
-    font-weight: bold;
+    font-weight: 800;
     font-style: italic;
 }
 ::-webkit-scrollbar{
-    width: 4px;
+    width: 6px;
 }
 ::-webkit-scrollbar-thumb{
     border-radius: 10px;
-    background-color: var(--col1);
+    background-color: #FABC3F;
     box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }

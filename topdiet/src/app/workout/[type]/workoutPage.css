@@ -1,0 +1,75 @@
+.workout {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    text-align: center;
+}
+.workout_exercises{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+}
+.workout_exercise {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    width: 100%;
+}
+.workout_exercise--reverse {
+    flex-direction: row-reverse;
+}
+.workout_exercise_image img {
+    max-width: 100%;
+    height: auto;
+    min-width: 300px;
+}
+.workout_exercise_content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 10px;
+    margin-left: 20px;
+}
+.workout_exercise--reverse .workout_exercise_content {
+    text-align: right;
+    align-items: flex-end;
+}
+
+.workout_exercise_content h2 {
+    font-size: 40px;
+    font-weight: bold;
+    -webkit-text-stroke: 1px var(--col1);
+    color: var(--col3);
+
+}
+
+.workout_exercise_content span{
+    font-size: 20px;
+    font-weight: 300;
+    color: #ffffff;
+    background-color: var(--col3);
+    padding: 5px 20px;
+    border-radius: 35px;
+    width: fit-content;
+}
+
+.workout_exercise_content p {
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--col3);
+}
+
+.workout_exercises h3{
+    -webkit-text-stroke: 2px var(--col2);
+    color: var(--col2);
+    font-size: 10rem;
+    font-weight: 900;
+    text-align: center;
+    border: 1px solid var(--col3);
+    width: 15rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
