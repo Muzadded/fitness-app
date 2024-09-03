@@ -4,10 +4,10 @@ import { AiOutlineEye } from 'react-icons/ai'
 import './HomePage1.css'
 
 const HomePage1 = () => {
-  
+
   const [data, setData] = React.useState<any>(null)
-  
-  const getData = async()=>{
+
+  const getData = async () => {
     let temp = [
       {
         "name": "Calories Intake",
@@ -59,18 +59,61 @@ const HomePage1 = () => {
     getData()
   }, [])
 
+  function simplyfyFraction(numerator: number,denominator:number): [number, number]{
+    function gcd(a:number, b:number):number{
+      return b===0? a : gcd(b, a%b);
+    }
+    const commonDivisor : number = gcd(numerator, denominator);
+
+    //Simplyfy the fraction
+    const simplyfiedNumerator: number = numerator/commonDivisor;
+    const simplyfiedDenominator: number = denominator/commonDivisor;
+
+    return [simplyfiedNumerator,simplyfiedDenominator];
+  }
+
   return (
     <div className='meters'>
+
       {
-        data?.length>0 && data.map((item: any, index: number)=>{
-          <div className="card" key={index}>
-            <div className="card-header">
-              <div className="card-header-box">
-                <div className="card-header-box-name">{item.name}</div>
-                <div className="card-header-box-value">{item.value}{item.unit}</div>
+        data?.length > 0 && data.map((item: any, index: number) => {
+          return (
+            <div className='card' key={index}>
+              <div className='card-header'>
+                <div className='card-header-box'>
+                  <div className='card-header-box-name'>{item.name}</div>
+                  <div className='card-header-box-value'>{item.value} {item.unit}</div>
+                </div>
+                <div className='card-header-box'>
+                  <div className='card-header-box-name'>Target</div>
+                  <div className='card-header-box-value'>{item.goal} {item.goalUnit}</div>
+                </div>
               </div>
+
+              <CircularProgress
+                color="neutral"
+                determinate
+                variant="solid"
+                size="lg"
+                value={
+                  (item.value / item.goal) * 100
+                }
+              >
+                <span className='textincircle'>
+                  {
+                    simplyfyFraction(item.value, item.goal)[0] + ' / ' + simplyfyFraction(item.value, item.goal)[1]
+                  }
+                </span>
+              </CircularProgress>
+
+              <button
+               onClick={() => {
+                window.location.href = `/report/${item.name}`
+              }}
+              >Show Report <AiOutlineEye /></button>
+
             </div>
-          </div>
+          )
         })
       }
     </div>

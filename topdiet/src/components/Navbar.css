@@ -34,18 +34,18 @@ nav a:hover{
 }
 
 nav button{
-    background-color: var(--col1);
+    background-color: #FABC3F;
     border: none;
     outline: none;
     cursor: pointer;
     font-family:'Montserrat',sans-serif ;
     font-weight: bold;
-    color: #fff;
+    color: #000000;
     transition: 0.3s ease-in-out;
     padding: 10px;
     margin-left: 700px;
 }
 
 nav button:hover{
-    color: #FABC3F;
+    color: #554d3d;
 }
